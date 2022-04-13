@@ -209,6 +209,12 @@
     border-radius: 0 0 8px 0;
 }
 
+@media only screen and (max-width: 800px){
+	.img-row{
+		height: auto !important;
+	}
+}
+
 @media only screen and (max-width: 674px){
 
 	.img-row{
@@ -231,12 +237,6 @@
 	.img-col{
 		width: 100%;
 		margin-top: 5px;
-	}
-
-	.img-row-sq{
-		width: 100%;
-		height: auto !important;
-		margin: 0px;
 	}
 
 	.file-area4{

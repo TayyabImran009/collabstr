@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+	{% block title %}Login{% endblock %}
+
+	{% block extrastyle %}
+    <link rel="stylesheet" href="{% static '/css/join-brand-signup.css' %}">
+	{% endblock %}
+
+{% block content %} 
+{% if messages %}
+<div style="    display: flex;justify-content: center;">
+    <ul class="messages" style=" padding: 2px; display: flex;">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="display: flex;"> 
+            <div><img src="https://d5ik1gor6xydq.cloudfront.net/websiteImages/creatorMarketplace/err.svg" class="succ-err-msg-img" id="msg-img-err" style="display: block;width: 20px;margin-right: 14px;" ></div></div>
+            <div>{{ message }}</div>
+            {% endfor %}
+    </ul>
+</div>
+       
+        {% endif %}
+
+    <div class="form-holder login-form" style="display: block !important;">
+        <h1 class="form-title">Create Your Page</h1>
+		<p>{{msg}}</p>
+		<form class = "form" method="POST" action="{% url 'create_your_page' %}">
+			{% csrf_token %} 
+            <input type="hidden" name="influencer_username_2" value="{{influencer_username}}">
+            <input class="input input-login mt-3" type="text" placeholder="Fullname" name="fullname" required="">
+            <input class="input input-login mt-3" type="email" placeholder="Email" name="email" required="">
+            <input class="input input-login mt-3" type="password" placeholder="Password" name="password" minlength="6" required="">
+            <button type="submit" class="submit btn login-btn mt-5">Sign Up</button>
+            <div class="login-forgot forgot mt-4" style="color: rgb(151, 163, 197); font-size: 12px;"><p>By signing up, you agree to our <span class="text-dark">Terms</span> and <span class="text-dark">Privacy Policy.</p></span></div>
+        </form>
+    </div>
+
+	<!-- [ auth-signin ] start -->
+
+	<!-- [ auth-signin ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block extrajavascript %}
+
+	<script src=" /static/assets/js/waves.min.js"></script>
+
+{% endblock extrajavascript %} 
